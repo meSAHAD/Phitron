@@ -1,0 +1,7 @@
+*.exe
+*.txt
+pcode.cpp
+.vscode
+tempCodeRunnerFile.cpp
+should_solve.
+.cph
