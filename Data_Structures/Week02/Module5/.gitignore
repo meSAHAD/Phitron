@@ -1,5 +1,7 @@
 *.exe
-*.txt
+*.log
+*.o
+*.bin
 pcode.cpp
 .vscode
 tempCodeRunnerFile.cpp
