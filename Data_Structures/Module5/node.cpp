@@ -6,16 +6,19 @@ class Node
 public:
     int value;
     Node *next;
+    Node (int value)
+    {
+        this->value =value;
+        this->next=NULL;
+    }
 };
 
 int main()
 {
-    Node a, b;
-    a.value = 10;
-    b.value = 20;
+    Node a(10);
+    Node b(20);
 
-    a.next = &b;
-    b.next = NULL;
+    a.next=&b;
 
     cout << a.value << endl;       // print a
     cout << a.next->value << endl; // print b
