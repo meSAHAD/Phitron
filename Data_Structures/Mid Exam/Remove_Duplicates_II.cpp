@@ -1,26 +1,17 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-int main()
-{
+int main(){
     list<int> l;
-
-    int a;
-    while (true)
-    {
-        cin >> a;
-        if (a == -1)
+    int dup;
+    while (true){
+        cin >> dup;
+        if (dup == -1)
             break;
 
-        l.push_back(a);
+        l.push_back(dup);
     }
-
     l.sort();
     l.unique();
-
-    for (auto x : l)
-    {
-        cout << x << " ";
-    }
+    for (auto x : l) cout << x << " ";
 }

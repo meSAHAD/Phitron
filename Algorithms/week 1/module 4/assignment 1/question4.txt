@@ -1,0 +1,4 @@
+(a)  O(n * log(n))
+(b)  O(√n)
+(c)  O(√n * log(n))
+(d)  O(√n)

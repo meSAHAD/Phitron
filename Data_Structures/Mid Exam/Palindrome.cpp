@@ -14,7 +14,7 @@ public:
     }
 };
 
-void insert_tail(Node *&head, Node *&tail, int val)
+void tailinsertion(Node *&head, Node *&tail, int val)
 {
     Node *node = new Node(val);
     if (head == NULL)
@@ -28,16 +28,16 @@ void insert_tail(Node *&head, Node *&tail, int val)
     tail = tail->next;
 }
 
-void reverse_list(Node *curr, Node *&start, bool *flag)
+void reverse(Node *pre, Node *&start, bool *flag)
 {
-    if (curr == NULL)
+    if (pre == NULL)
     {
         return;
     }
 
-    reverse_list(curr->next, start, flag);
+    reverse(pre->next, start, flag);
 
-    if (curr->val == start->val)
+    if (pre->val == start->val)
     {
         start = start->next;
     }
@@ -47,10 +47,10 @@ void reverse_list(Node *curr, Node *&start, bool *flag)
         return;
     }
 }
-bool isPalindrome(Node *head)
+bool checkpalindrom(Node *head)
 {
     bool flag = true;
-    reverse_list(head, head, &flag);
+    reverse(head, head, &flag);
 
     return flag;
 }
@@ -69,10 +69,10 @@ int main()
             break;
         }
 
-        insert_tail(head, tail, a);
+        tailinsertion(head, tail, a);
     }
 
-    if (isPalindrome(head) == true)
+    if (checkpalindrom(head) == true)
     {
         cout << "YES";
     }

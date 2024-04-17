@@ -1,9 +1,0 @@
-*.exe
-*.log
-*.o
-*.bin
-pcode.cpp
-.vscode
-tempCodeRunnerFile.cpp
-should_solve.
-.cph

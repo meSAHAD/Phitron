@@ -16,7 +16,7 @@ public:
     }
 };
 
-void insert_head(Node *&head, Node *&tail, int val)
+void insertHead(Node *&head, Node *&tail, int val)
 {
     Node *node = new Node(val);
 
@@ -35,7 +35,7 @@ void insert_head(Node *&head, Node *&tail, int val)
     }
 }
 
-void insert_tail(Node *&head, Node *&tail, int val)
+void insertTail(Node *&head, Node *&tail, int val)
 {
     Node *node = new Node(val);
 
@@ -51,38 +51,19 @@ void insert_tail(Node *&head, Node *&tail, int val)
     tail = tail->next;
 }
 
-void insert_pos(Node *&head, int pos, int val)
+void insertAtPosition(Node *&head, int pos, int val)
 {
     Node *node = new Node(val);
     Node *tmp = head;
 
-    for (int i = 0; i < pos - 1; i++)
-    {
+    for (int i = 1; i < pos; i++)
         tmp = tmp->next;
-    }
-
     node->next = tmp->next;
     tmp->next = node;
     node->prev = tmp;
     node->next->prev = node;
 }
-
-int size(Node *head)
-{
-    Node *tmp = head;
-
-    int cnt = 0;
-
-    while (tmp != NULL)
-    {
-        cnt++;
-        tmp = tmp->next;
-    }
-
-    return cnt;
-}
-
-void print(Node *head)
+void printList(Node *head)
 {
     Node *tmp = head;
 
@@ -93,7 +74,7 @@ void print(Node *head)
     }
 }
 
-void print_reverse(Node *tail)
+void printList_reverse(Node *tail)
 {
     Node *tmp = tail;
 
@@ -102,6 +83,18 @@ void print_reverse(Node *tail)
         cout << tmp->val << " ";
         tmp = tmp->prev;
     }
+}
+
+int count(Node *head)
+{
+    Node *tmp = head;
+    int cnt = 0;
+    while (tmp != NULL)
+    {
+        cnt++;
+        tmp = tmp->next;
+    }
+    return cnt;
 }
 
 int main()
@@ -117,28 +110,26 @@ int main()
         int x, v;
         cin >> x >> v;
 
-        if (x > size(head))
+        if (x <= count(head))
         {
-            cout << "Invalid" << endl;
-            continue;
+            if (x == 0)
+                insertHead(head, tail, v);
+            else if (x == count(head))
+                insertTail(head, tail, v);
+            else
+                insertAtPosition(head, x, v);
+
+            cout << "L -> ";
+            printList(head);
+            cout << endl;
+            cout << "R -> ";
+            printList_reverse(tail);
+            cout << endl;
         }
-        else if (x == 0)
-        {
-            insert_head(head, tail, v);
-        }
-        else if (x == size(head))
-        {
-            insert_tail(head, tail, v);
-        }
+
         else
         {
-            insert_pos(head, x, v);
+            cout << "Invalid" << endl;
         }
-        cout << "L -> ";
-        print(head);
-        cout << endl;
-        cout << "R -> ";
-        print_reverse(tail);
-        cout << endl;
     }
 }
